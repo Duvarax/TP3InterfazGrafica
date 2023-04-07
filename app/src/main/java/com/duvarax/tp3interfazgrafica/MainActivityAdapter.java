@@ -3,6 +3,7 @@ package com.duvarax.tp3interfazgrafica;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,14 +42,12 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.descripcion.setText((peliculas.get(position)).getDescripcion());
         holder.titulo.setText((peliculas.get(position)).getTitulo()+"");
-        Glide.with(contexto)
-                .load(peliculas.get(position).getUrlPortada())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.portada);
+        holder.portada.setImageResource(peliculas.get(position).getUrlPortada());
         holder.btnDetalle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
+                Log.d("Pelicula", peliculas.get(position).toString());
                 bundle.putSerializable("pelicula", peliculas.get(position));
                 Intent intent = new Intent(contexto, DetalleActivity.class);
                 intent.putExtra("pelicula", bundle);

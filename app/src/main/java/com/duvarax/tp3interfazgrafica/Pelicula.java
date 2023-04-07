@@ -1,5 +1,7 @@
 package com.duvarax.tp3interfazgrafica;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -53,5 +55,11 @@ public class Pelicula implements Serializable {
 
     public void setUrlPortada(int urlPortada) {
         this.urlPortada = urlPortada;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return actor;
     }
 }
